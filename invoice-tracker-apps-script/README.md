@@ -1,31 +1,31 @@
 # Google Sheets Invoice Tracker (Apps Script sample)
 
-A small automation for a Google Sheet called `Invoice Tracker`. It adds an **Invoice Tools** menu with three actions:
+A small automation for a Google Sheet called `Invoice Tracker`. It adds an **Invoice Tools** menu with four actions:
 
 1. **Highlight Overdue Unpaid Rows**: any unpaid invoice with a past due date turns light red; paid and upcoming rows reset to white.
 2. **Email Me Unpaid & Overdue Summary**: emails the sheet owner a digest of open invoices and the total outstanding.
 3. **Setup Daily 8 AM Trigger**: installs one daily trigger that runs both checks (it replaces an older copy instead of duplicating).
+4. **Insert Demo Data (empty tab only)**: fills the tab with five made-up invoices, with due dates relative to today. It refuses to run if the tab already has data.
+
+![Overdue unpaid rows highlighted in red](screenshot-highlight.png)
 
 ## Setup
 
-1. Create a new Google Sheet and rename the first tab to `Invoice Tracker`.
-2. Paste the sample rows below into `A1:F6`.
-3. Open Extensions > Apps Script, replace the default code with `Code.gs`, and save.
-4. Reload the sheet; the **Invoice Tools** menu appears. Run **Highlight Overdue Unpaid Rows** and authorise the script when asked.
+1. Create a new Google Sheet.
+2. Open Extensions > Apps Script, replace the default code with `Code.gs`, and save.
+3. Reload the sheet; the **Invoice Tools** menu appears. Run **Insert Demo Data** (or rename the first tab to `Invoice Tracker` and enter your own rows under these headers: Invoice No, Client, Amount, Due Date, Status, Client Email).
+4. The first run asks for permission. Google shows an "unverified app" notice for personal scripts; that is normal.
 
-## Sample rows (demo data only)
+## What was tested
 
-```csv
-Invoice No,Client,Amount,Due Date,Status,Client Email
-INV-1001,Merlion Logistics Demo,480.00,2026-11-01,Unpaid,accounts@merlion-demo.example.com
-INV-1002,Orchid Design Studio,1250.00,2026-11-10,Unpaid,billing@orchid-demo.example.com
-INV-1003,Kopi Corner Cafe,150.00,2026-11-15,Paid,hello@kopicorner-demo.example.com
-INV-1004,Apex Precision Demo,890.00,2026-11-18,Unpaid,finance@apex-demo.example.com
-INV-1005,Sunlight Tuition Sample,320.00,2026-12-05,Unpaid,admin@sunlight-demo.example.com
-```
+Tested on 21 Nov 2026 in a live Google Sheet (Singapore time zone):
+
+- Insert Demo Data created the five rows, bold headers, number and date formats, and renamed the first tab.
+- Highlight shaded the three overdue unpaid invoices and left the paid invoice and the not-yet-due invoice white (screenshot above).
+- Email Summary arrived with the three overdue invoices, the one open invoice, and the correct total (S$2,940.00); the paid invoice was left out.
+- Setup Daily Trigger created one time-based trigger; running it a second time still left one trigger (no duplicates). The test trigger was deleted afterwards.
+- Not tested: waiting for the 8 AM run itself.
 
 ## About this sample
 
-Written with AI-assisted tools and reviewed by me. All names and emails are made-up demo data.
-
-Status: reviewed, but not yet run in a live Google Sheet. A screenshot will be added after testing.
+Written with AI-assisted tools, then run and checked by me. All names and emails are made-up demo data.

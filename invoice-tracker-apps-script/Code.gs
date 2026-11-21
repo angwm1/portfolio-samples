@@ -16,6 +16,7 @@ function onOpen() {
     .addItem("Email Me Unpaid & Overdue Summary", "emailUnpaidSummary")
     .addSeparator()
     .addItem("Setup Daily 8 AM Trigger", "setupDaily8amTrigger")
+    .addItem("Insert Demo Data (empty tab only)", "insertDemoData")
     .addToUi();
 }
 
@@ -119,4 +120,42 @@ function setupDaily8amTrigger() {
 function runDailyInvoiceCheck() {
   highlightOverdueInvoices();
   emailUnpaidSummary();
+}
+
+/**
+ * Optional helper: fills the "Invoice Tracker" tab with 5 made-up demo rows.
+ * It only works on an empty tab, so it can never overwrite real data.
+ * Due dates are relative to today, so the demo always has overdue rows.
+ */
+function insertDemoData() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SHEET_NAME);
+  if (!sheet) {
+    const first = ss.getSheets()[0];
+    sheet = first.getLastRow() === 0 ? first.setName(SHEET_NAME) : ss.insertSheet(SHEET_NAME);
+  }
+  if (sheet.getLastRow() > 0) {
+    SpreadsheetApp.getUi().alert('The "' + SHEET_NAME + '" tab already has data, so nothing was changed.');
+    return;
+  }
+
+  const daysFromToday = function (n) {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + n);
+    return d;
+  };
+  const rows = [
+    ["Invoice No", "Client", "Amount", "Due Date", "Status", "Client Email"],
+    ["INV-1001", "Merlion Logistics Demo", 480, daysFromToday(-20), "Unpaid", "accounts@merlion-demo.example.com"],
+    ["INV-1002", "Orchid Design Studio", 1250, daysFromToday(-11), "Unpaid", "billing@orchid-demo.example.com"],
+    ["INV-1003", "Kopi Corner Cafe", 150, daysFromToday(-6), "Paid", "hello@kopicorner-demo.example.com"],
+    ["INV-1004", "Apex Precision Demo", 890, daysFromToday(-3), "Unpaid", "finance@apex-demo.example.com"],
+    ["INV-1005", "Sunlight Tuition Sample", 320, daysFromToday(14), "Unpaid", "admin@sunlight-demo.example.com"]
+  ];
+  sheet.getRange(1, 1, rows.length, 6).setValues(rows);
+  sheet.getRange(1, 1, 1, 6).setFontWeight("bold");
+  sheet.getRange(2, 3, rows.length - 1, 1).setNumberFormat("#,##0.00");
+  sheet.getRange(2, 4, rows.length - 1, 1).setNumberFormat("yyyy-mm-dd");
+  sheet.autoResizeColumns(1, 6);
 }
