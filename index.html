@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio samples</title>
+  <meta name="description" content="Small samples of web and automation work: a mobile-first demo site, a Python scraper and a Google Sheets script. Demo data only.">
+  <style>
+    :root { color-scheme: light dark; --bg: #fafaf9; --card: #ffffff; --text: #1c1917; --muted: #57534e; --line: #e7e5e4; --accent: #0f766e; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1c1917; --card: #292524; --text: #fafaf9; --muted: #d6d3d1; --line: #44403c; --accent: #5eead4; } }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 16px 56px; }
+    h1 { font-size: 1.8rem; letter-spacing: -0.01em; }
+    .lead { color: var(--muted); margin-top: 8px; }
+    .grid { display: grid; gap: 14px; margin-top: 28px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+    .card h2 { font-size: 1.1rem; margin-bottom: 6px; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    .tag { display: inline-block; font-size: 0.78rem; border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; margin-top: 10px; color: var(--muted); }
+    a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
+    footer { margin-top: 32px; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Portfolio samples</h1>
+    <p class="lead">Small samples of web and automation work. Built with AI-assisted tools and reviewed by me. All data is demo data.</p>
+
+    <div class="grid">
+      <section class="card">
+        <h2><a href="sample-bakery-site/">Demo website: Sample Bakery</a></h2>
+        <p>A mobile-first one-page site for a fictional bakery, with a WhatsApp button, menu, opening hours and an enquiry form with a PDPA consent box.</p>
+        <span class="tag">Fictional business, form in demo mode</span>
+      </section>
+
+      <section class="card">
+        <h2><a href="https://github.com/angwm1/portfolio-samples/tree/main/books-scraper">Python scraper</a></h2>
+        <p>Scrapes a public practice site, cleans and validates the data and exports a CSV. A real run produced 60 clean rows (file included).</p>
+        <span class="tag">Public practice site only</span>
+      </section>
+
+      <section class="card">
+        <h2><a href="https://github.com/angwm1/portfolio-samples/tree/main/invoice-tracker-apps-script">Google Sheets automation</a></h2>
+        <p>An invoice tracker for Google Sheets: highlights overdue invoices, emails a summary and sets a daily trigger.</p>
+        <span class="tag">Reviewed, not yet tested in a live Sheet</span>
+      </section>
+    </div>
+
+    <footer>Source for all three samples is in this repository.</footer>
+  </main>
+</body>
+</html>
