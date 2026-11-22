@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio samples</title>
-  <meta name="description" content="Small samples of web and automation work: a mobile-first demo site, a Python scraper and a Google Sheets script. Demo data only.">
+  <meta name="description" content="Small samples of web, video and automation work: a mobile-first demo site, a promo reel, a Python scraper and a Google Sheets script. Demo data only.">
   <style>
     :root { color-scheme: light dark; --bg: #fafaf9; --card: #ffffff; --text: #1c1917; --muted: #57534e; --line: #e7e5e4; --accent: #0f766e; }
     @media (prefers-color-scheme: dark) { :root { --bg: #1c1917; --card: #292524; --text: #fafaf9; --muted: #d6d3d1; --line: #44403c; --accent: #5eead4; } }
@@ -17,6 +17,7 @@
     .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
     .card h2 { font-size: 1.1rem; margin-bottom: 6px; }
     .card p { color: var(--muted); font-size: 0.95rem; }
+    .card video { display: block; width: 100%; max-width: 270px; aspect-ratio: 9 / 16; margin-top: 12px; border-radius: 10px; background: #000; }
     .tag { display: inline-block; font-size: 0.78rem; border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; margin-top: 10px; color: var(--muted); }
     a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
     footer { margin-top: 32px; color: var(--muted); font-size: 0.85rem; }
@@ -25,13 +26,23 @@
 <body>
   <main>
     <h1>Portfolio samples</h1>
-    <p class="lead">Small samples of web and automation work. Built with AI-assisted tools and reviewed by me. All data is demo data.</p>
+    <p class="lead">Small samples of web, video and automation work. Built with AI-assisted tools and reviewed by me. All data is demo data.</p>
 
     <div class="grid">
       <section class="card">
         <h2><a href="sample-bakery-site/">Demo website: Sample Bakery</a></h2>
         <p>A mobile-first one-page site for a fictional bakery, with a WhatsApp button, menu, opening hours and an enquiry form with a PDPA consent box.</p>
         <span class="tag">Fictional business, form in demo mode</span>
+      </section>
+
+      <section class="card">
+        <h2>Promo reel: Sample Bakery</h2>
+        <p>A 17-second vertical video ad for the same fictional bakery, sized for Instagram Reels, TikTok and YouTube Shorts: a hook line, price cards and a WhatsApp end card. The footage is AI-generated and says so in the video; the text, timing and layout are built in code.</p>
+        <video controls playsinline preload="none" poster="sample-bakery-reel/poster.jpg" aria-label="Sample Bakery promo reel, 17 seconds, vertical video">
+          <source src="sample-bakery-reel/sample-bakery-reel.mp4" type="video/mp4">
+          Your browser cannot play this video. <a href="sample-bakery-reel/sample-bakery-reel.mp4">Download the MP4</a>.
+        </video>
+        <span class="tag">Fictional business, AI-generated footage</span>
       </section>
 
       <section class="card">
@@ -47,7 +58,7 @@
       </section>
     </div>
 
-    <footer>Source for all three samples is in this repository.</footer>
+    <footer>Source for the demo site, scraper and Sheets script is in this repository. The reel is the finished video.</footer>
   </main>
 </body>
 </html>
